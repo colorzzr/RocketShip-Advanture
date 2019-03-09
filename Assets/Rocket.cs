@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Rocket : MonoBehaviour{
 
@@ -48,8 +49,15 @@ public class Rocket : MonoBehaviour{
             case "Platform":
                 print("platform");
                 break;
+            case "Landing":
+                print("Landing");
+                // switch to next
+                SceneManager.LoadScene(1);
+                break;
             default:
                 print("DIe!");
+                // switch to next
+                SceneManager.LoadScene(0);
                 break;
         }
     }
