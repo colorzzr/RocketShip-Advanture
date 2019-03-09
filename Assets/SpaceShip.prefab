@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 3105254921087390177}
   - component: {fileID: 1272498069}
   - component: {fileID: 1272498071}
-  - component: {fileID: 2361908385278464751}
+  - component: {fileID: 5092215225917407936}
   m_Layer: 0
   m_Name: SpaceShip
   m_TagString: Untagged
@@ -136,7 +136,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3105254921087390206}
   serializedVersion: 2
-  m_Mass: 0.06
+  m_Mass: 5
   m_Drag: 0.25
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -156,7 +156,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d8d2d9d82c33b44e96303b0af00e5ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!82 &2361908385278464751
+  rcsThrust: 100
+  mainThrust: 100
+  thrustSound: {fileID: 8300000, guid: d888cd81583c053419abcd90bd971539, type: 3}
+  successSound: {fileID: 8300000, guid: 33fe791e3ca891940be81a001c6b13c7, type: 3}
+  deadSound: {fileID: 8300000, guid: da6b97e6590c2b34d8448f90a5985680, type: 3}
+  tt: {fileID: 8300000, guid: 33fe791e3ca891940be81a001c6b13c7, type: 3}
+--- !u!82 &5092215225917407936
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -166,10 +172,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 08414f60e3d28164a8bdbe380e0161b1, type: 3}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
   m_Volume: 1
-  m_Pitch: 0.8
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
