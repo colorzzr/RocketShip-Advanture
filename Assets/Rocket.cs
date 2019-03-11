@@ -11,11 +11,16 @@ public class Rocket : MonoBehaviour{
     };
     [SerializeField] float rcsThrust = 100f;
     [SerializeField] float mainThrust = 100f;
+    [SerializeField] float levelLoadDelay = 2f;
 
     // sound output dereference
     [SerializeField] AudioClip thrustSound;
     [SerializeField] AudioClip successSound;
     [SerializeField] AudioClip deadSound;
+
+    [SerializeField] ParticleSystem thrustParti;
+    [SerializeField] ParticleSystem successParti;
+    [SerializeField] ParticleSystem deadParti;
 
     Rigidbody rb;
     AudioSource audioSource;
@@ -35,11 +40,13 @@ public class Rocket : MonoBehaviour{
             print("Space Press!");
             // according to the its own space
             rb.AddRelativeForce(Vector3.up * mainThrust);
-            // play the sound
-            if(!audioSource.isPlaying) audioSource.PlayOneShot(thrustSound);
+            // play the sound and particle eff
+            if (!audioSource.isPlaying) audioSource.PlayOneShot(thrustSound);
+            thrustParti.Play();
         }
         else {
-            if(state == State.Alive) audioSource.Stop();
+            audioSource.Stop();
+            thrustParti.Stop();
         }
 
         // rotate the rocket
@@ -77,23 +84,28 @@ public class Rocket : MonoBehaviour{
                 print("Landing");
                 level = 1;
                 state = State.Transaction;
-                // play the sound
+
+                // play the sound and particle eff
+                successParti.Play();
                 audioSource.Stop();
                 audioSource.PlayOneShot(successSound);
-                print("test");
+
                 // switch to next
-                Invoke("nextLevel", 1f);
+                Invoke("nextLevel", levelLoadDelay);
                 break;
             default:
                 print("DIe!");
                 // reset level
                 level = 0;
                 state = State.Die;
-                // play the sound
+
+                // play the sound and particle eff
+                deadParti.Play();
                 audioSource.Stop();
                 audioSource.PlayOneShot(deadSound);
+
                 // switch to next
-                Invoke("nextLevel", 1f);
+                Invoke("nextLevel", levelLoadDelay);
                 break;
         }
     }
@@ -104,7 +116,7 @@ public class Rocket : MonoBehaviour{
 
     // Update is called once per frame
     void Update(){
-        if(state != State.Die) processInput();
+        if(state == State.Alive) processInput();
         //if(audioSource.isPlaying) 
     }
 }
