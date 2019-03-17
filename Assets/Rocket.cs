@@ -82,7 +82,7 @@ public class Rocket : MonoBehaviour{
                 break;
             case "Landing":
                 print("Landing");
-                level = 1;
+                //level = 1;
                 state = State.Transaction;
 
                 // play the sound and particle eff
@@ -91,12 +91,13 @@ public class Rocket : MonoBehaviour{
                 audioSource.PlayOneShot(successSound);
 
                 // switch to next
-                Invoke("nextLevel", levelLoadDelay);
+                //Invoke("nextLevel", levelLoadDelay);
+                Invoke("reloadScene", levelLoadDelay);
                 break;
             default:
                 print("DIe!");
                 // reset level
-                level = 0;
+                //level = 0;
                 state = State.Die;
 
                 // play the sound and particle eff
@@ -105,9 +106,16 @@ public class Rocket : MonoBehaviour{
                 audioSource.PlayOneShot(deadSound);
 
                 // switch to next
-                Invoke("nextLevel", levelLoadDelay);
+                //Invoke("nextLevel", levelLoadDelay);
+                Invoke("reloadScene", levelLoadDelay);
                 break;
         }
+    }
+
+    // test function for reload scene
+    void reloadScene() {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 
     void nextLevel() {
