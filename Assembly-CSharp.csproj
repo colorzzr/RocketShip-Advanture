@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\Level1\Oscillatror.cs" />
     <Compile Include="Assets\Level3\objectMovement.cs" />
+    <Compile Include="Assets\Level4\landingMove.cs" />
     <Compile Include="Assets\Rocket.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/USER/Documents/SpaceShip Advanture/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
